@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggle()" role="button">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>Bi' Haber Yönetim Paneli</div>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs >
+    <ul class="menu-items" fxLayout fxLayoutGap="10px">
+      <li *ngFor="let link of links"><a [routerLink]='link.routerLink'>{{link.content}}</a></li>
+      <li><a (click)="logOut()" [routerLink]='null'>Çıkış Yap</a></li>
+    </ul>
+  </div>
+</mat-toolbar>

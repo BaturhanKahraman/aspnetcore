@@ -1,0 +1,30 @@
+<h3>Lütfen duyurularını görmek istediğiniz dersi seçin.</h3>
+<div
+  class="mx-auto text-center"
+  *ngIf="courses.length == 0; else coursesSelected"
+>
+  Herhangi bir ders seçmemişsiniz!
+</div>
+<ng-template #coursesSelected>
+  <select class="custom-select" [size]="courses.length">
+    <option
+      *ngFor="let course of courses"
+      [value]="course.id"
+      (click)="getAnnouncementsByCourse(course.id)"
+    >
+      {{ course.name }}
+    </option>
+  </select>
+</ng-template>
+<div *ngIf="announcements" class="mt-3">
+  <div class="list-group">
+    <a
+      class="list-group-item list-group-item-action"
+      *ngFor="let ann of announcements"
+      [routerLink]="'/announcement/' + ann.id"
+    >
+      {{ ann.title }}
+    </a>
+  </div>
+  <div></div>
+</div>

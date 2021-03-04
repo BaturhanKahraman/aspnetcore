@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="alert alert-success col-12" *ngIf="successText" >{{successText}}</div>
+    <div class="card col-md-6">
+      <div class="card-body" >
+        <div class="card-body">
+          <h4 class="card-title">Profil Bilgileri</h4>
+
+          <p class="card-text">
+            İsim Soyisim :
+            {{ userProfile?.name + " " + userProfile?.surname | titlecase }}
+          </p>
+
+          <p class="card-text">Email : {{ userProfile?.email }}</p>
+          <p class="card-text">
+            Kayıt Tarihi :
+            {{ userProfile?.registeredAt | date: "longDate" }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2>Şifre Değiştir</h2>
+      <hr />
+      <div class="form-group">
+        <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
+          <span class="text-danger" *ngIf="errorText">{{errorText}}</span>
+
+          <input
+            formControlName="oldPassword"
+            class="form-control my-2"
+            type="password"
+            placeholder="Eski şifreniz"
+          />
+          <input
+            formControlName="newPassword"
+            class="form-control my-2"
+            type="password"
+            placeholder="Yeni şifreniz"
+          />
+          <input
+            formControlName="reNewPassword"
+            class="form-control my-2"
+            type="password"
+            placeholder="Yeni şifreniz Tekrar"
+          />
+            <button
+              class="btn btn-primary float-right"
+              type="submit"
+              [disabled]="!passwordForm.valid"
+            >
+              Şifre Değiştir
+            </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

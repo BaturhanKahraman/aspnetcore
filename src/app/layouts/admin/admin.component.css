@@ -1,0 +1,6 @@
+mat-sidenav-container,mat-sidenav-content{
+  height: 100vh;
+}
+mat-sidenav{
+  width: 225px;
+}

@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header">Son Duyurular</div>
+  <ul class="list-group list-group-flush">
+    <li
+      class="list-group-item"
+      *ngIf="lastAnnouncements.length == 0; else annSelected"
+    >
+      <a>Lütfen ders seçin </a>
+    </li>
+    <ng-template #annSelected>
+      <li
+        class="list-group-item"
+        *ngFor="let ann of lastAnnouncements.slice(0, 5)"
+      >
+        <a [routerLink]="'/announcement/' + ann.id"> {{ ann.title }}</a>
+      </li>
+    </ng-template>
+  </ul>
+</div>

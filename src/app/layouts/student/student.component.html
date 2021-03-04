@@ -1,0 +1,12 @@
+<app-navbar-student></app-navbar-student>
+<div class="container-fluid">
+  <div class="row mt-3 flex-nowrap">
+    <div class="d-none d-lg-block col-lg-2" id="student-left-column">
+      <app-left-column></app-left-column>
+    </div>
+    <div class="col-md-9 col-lg-7"><router-outlet></router-outlet></div>
+    <div class="col-md-3 col-lg-3 d-none d-md-block" id="student-right-column">
+      <app-right-column></app-right-column>
+    </div>
+  </div>
+</div>

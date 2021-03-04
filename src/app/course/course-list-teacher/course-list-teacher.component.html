@@ -1,0 +1,8 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="course">
+
+    <h2 fxFlex>Sorumlu olduğunuz dersler</h2>
+    <mat-action-list fxFlex>
+      <a mat-list-item *ngFor="let course of courses"  fxLayout fxLayoutAlign="center" [routerLink]="'/teacher/course/' + course.id"> {{course.name}}  </a>
+    </mat-action-list>
+
+</div>

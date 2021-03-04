@@ -1,0 +1,22 @@
+<a
+  mat-list-item
+  (click)="onClose()"
+  *ngFor="let link of links"
+  [routerLink]="link.routerLink"
+>
+  <mat-icon *ngIf="link.icon; else noIcon">{{ link.icon }}</mat-icon>
+  <span class="nav-caption">{{ link.content }}</span>
+  <ng-template #noIcon>{{ link.icon }}</ng-template>
+</a>
+<a mat-list-item (click)="logOut()" >
+  <mat-icon>logout</mat-icon>
+  <span class="nav-caption">Çıkış Yap</span>
+</a>
+
+<!--
+<a mat-list-item routerLink="/" (click)='onClose()'>
+  <mat-icon>person</mat-icon>
+  <span class="nav-caption">Users</span></a
+>
+<a mat-list-item routerLink="/" (click)='onClose()'>Users</a>
+<a mat-list-item routerLink="/" (click)='onClose()'>Users</a> -->

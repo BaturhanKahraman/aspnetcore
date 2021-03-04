@@ -1,0 +1,29 @@
+<div fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
+  <form
+    class="course-edit-form"
+    fxFlex="60"
+    fxLayout="column"
+    fxLayoutGap="6px"
+    fxLayoutAlign="center center"
+    [formGroup]="editForm"
+  >
+    <h2>Kursu düzenleyin</h2>
+    <mat-form-field>
+      <mat-label>Ders ismi</mat-label>
+      <input matInput formControlName="name"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ders kodu</mat-label>
+      <input matInput formControlName="code"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Dersi veren eğitmen</mat-label>
+      <mat-select [disabled]="isAdmin()">
+        <mat-option>
+          Hoca ismi konulacak!
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button  type="submit">Değiştir</button>
+  </form>
+</div>

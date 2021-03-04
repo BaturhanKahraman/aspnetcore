@@ -1,0 +1,51 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="7px" matSort>
+  <h2>Dersin duyuruları</h2>
+  <mat-form-field fxFill>
+    <mat-label>Arayın</mat-label>
+    <input matInput (keyup)="filterDataTable($event.target.value)" />
+  </mat-form-field>
+  <mat-table [dataSource]="dataSource" fxFill>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.id | number }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Başlık</mat-header-cell
+      >
+      <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="addedAt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Eklenme Tarihi</mat-header-cell
+      >
+      <mat-cell *matCellDef="let element">{{
+        element.addedAt | date
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updatedAt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Güncellenme Tarihi</mat-header-cell
+      >
+      <mat-cell *matCellDef="let element">{{
+        element.updatedAt | date
+      }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Aktiflik Durumu</mat-header-cell
+      >
+      <mat-cell *matCellDef="let element">
+        <span *ngIf="element.isActive">Aktif </span>
+        <span *ngIf="!element.isActive">Pasif </span>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

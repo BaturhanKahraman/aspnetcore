@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/announcements">
+    <img src="../../assets/images/giris.png" id="logo" width="250px" alt="logo"/>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    (click)="collapsed = !collapsed"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div
+    class="collapse navbar-collapse"
+    [class.collapse]="collapsed"
+    (window:resize)="collapsed = true"
+  >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/announcements">Anasayfa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="course-selection">Ders seçimi</a>
+      </li>
+      <li class="nav-item"><a routerLink="course-announcement" class="nav-link">Dersler</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a routerLink="/profile" class="nav-link">Profilim</a></li>
+      <li class="nav-item"><a (click)="logOut()" role="button" class="nav-link">Çıkış</a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,17 @@
+<div class="mx-auto text-center" *ngIf="!announcements">
+  Takip etmek için herhangi bir ders seçmemişsiniz veya seçtiğiniz derslerde herhangi bir duyuru bulunmamaktadır.
+</div>
+
+<div class="card text-center mx-auto" *ngFor="let ann of announcements">
+  <div class="card-header">
+    {{ann.courseName.toUpperCase()}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ann.title}}</h5>
+    <p class="card-text">{{ann.content.slice(0,240)}}...</p>
+    <a [routerLink]="'/announcement/' + ann.id" class="btn btn-primary">Daha fazlasını oku</a>
+  </div>
+  <div class="card-footer text-muted">
+    {{ann.addedAt | date : 'dd/MM/yyyy hh:mm'}}
+  </div>
+</div>

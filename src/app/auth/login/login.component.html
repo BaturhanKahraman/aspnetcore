@@ -1,0 +1,49 @@
+<div class="col-md-8 m-auto d-flex flex-column justify-content-center">
+  <img
+    id="loginImg"
+    class="mx-auto img-fluid"
+    src="../../assets/images/giris.png"
+    alt=""
+  />
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="d-flex flex-column align-items-center form-group">
+      <span class="text-danger" *ngIf="errorText">
+       {{errorText}}
+      </span>
+      <input
+        class="form-control"
+        formControlName="email"
+        id="email"
+        placeholder="Eposta Adresiniz"
+      />
+      <span class="text-danger" *ngIf="loginForm.get('email').hasError('emailDomain')"
+        >Mail adresiniz ankara.edu.tr uzantılı olmalıdır</span
+      >
+      <input
+        class="form-control"
+        formControlName="password"
+        type="password"
+        id="password"
+        placeholder="Şifreniz"
+      />
+      <div class="d-flex flex-row justify-content-center">
+        <a class="btn" id="signup" routerLink="/signup">Kayıt Ol</a>
+        <input
+          class="btn"
+          type="submit"
+          [disabled]="!loginForm.valid"
+          value="Giriş Yap"
+        />
+      </div>
+      <div class="mt-2">
+        <p class="text-center">
+          Ankara Üniversitesi E-Mail adresi ile kayıt olmanız tercih edilir.<br />
+          Mevcut adresiniz yoksa, açmak için
+          <a href="https://epostabasvuru.ankara.edu.tr/" target="_blank"
+            >tıklayınız</a
+          >.
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

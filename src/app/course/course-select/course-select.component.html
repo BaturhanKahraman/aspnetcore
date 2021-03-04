@@ -1,0 +1,61 @@
+<h3>Lütfen bölümünüzü seçin.</h3>
+<select
+  name=""
+  #bolumler
+  class="form-control"
+  (change)="getCourseList(bolumler.value)"
+>
+  <option selected disabled hidden>Lütfen bölümünüzü seçin</option>
+  <option *ngFor="let department of departments" [value]="department.id">
+    {{ department.name }}
+  </option>
+</select>
+<hr />
+<div *ngIf="courses">
+<div *ngIf="courses.length>0;else noCourse">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ders Kodu</th>
+        <th scope="col">Ders</th>
+        <th scope="col">Öğretim Görevlisi</th>
+        <th scope="col">Seçim Durumu</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{ course.code.toUpperCase() }}</td>
+        <td>{{ course.name.toUpperCase() }}</td>
+        <td>{{ course.teacherName.toUpperCase() }}</td>
+        <td>
+          {{
+            followedCoursesId.includes(course.id) ? "Seçili" : "Seçili Değil"
+          }}
+        </td>
+        <td>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="flexSwitchCheckDefault"
+            [checked]="followedCoursesId.includes(course.id)"
+            [value]="course.id"
+            (change)="changeOnCheckBox($event)"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-end">
+    <input
+      type="button"
+      (click)="onSubmit()"
+      value="Onayla"
+      class="btn btn-primary"
+    />
+  </div>
+</div>
+<ng-template #noCourse>
+  <p>Bölüme eklenmiş herhangi bir kurs bulunamadı.</p>
+</ng-template>
+</div>

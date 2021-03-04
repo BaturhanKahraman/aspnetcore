@@ -1,0 +1,85 @@
+<div class="col-md-8 m-auto d-flex flex-column justify-content-center">
+  <img
+    id="loginImg"
+    class="mx-auto img-fluid"
+    src="../../assets/images/giris.png"
+    alt=""
+  />
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="d-flex flex-column align-items-center">
+      <span class="text-danger" *ngIf="errorText">{{errorText}}</span>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="İsminiz"
+      />
+      <div *ngIf="signUpForm.get('name').touched">
+        <span class="text-danger" *ngIf="signUpForm.get('name').hasError('required')" >İsim alanı gereklidir!</span>
+        <span class="text-danger" *ngIf="signUpForm.get('name').hasError('minlength')">İsim en az 3 karakter olmalıdır</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="surname"
+        placeholder="Soyisminiz"
+      />
+      <div class="text-center" *ngIf="signUpForm.get('surname').touched">
+        <span class="text-danger" *ngIf="signUpForm.get('surname').hasError('required')" >Soyisim alanı gereklidir!</span>
+        <span class="text-danger" *ngIf="signUpForm.get('surname').hasError('minlength')">Soyisim en az 3 karakter olmalıdır</span>
+      </div>
+      <input
+        class="form-control"
+        type="email"
+        id="mail"
+        formControlName="email"
+        placeholder="Eposta Adresiniz"
+      />
+      <div class="text-center" *ngIf="signUpForm.get('email').touched">
+        <span class="text-danger" *ngIf="signUpForm.get('email').hasError('required')" >Eposta alanı gereklidir!</span>
+        <span class="text-danger" *ngIf="signUpForm.get('email').hasError('email')" >Lütfen geçerli bir eposta adresi girin!</span>
+        <span class="text-danger" *ngIf="signUpForm.get('email').hasError('emailDomain')" >Lütfen Ankara Üniversitesi epostanızı girin!</span>
+      </div>
+      <input
+        class="form-control"
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Şifreniz"
+      />
+      <div class="text-center" *ngIf="signUpForm.get('password').touched">
+        <span class="text-danger" *ngIf="signUpForm.get('password').hasError('required')" >Şifre alanı gereklidir!</span>
+        <span class="text-danger" *ngIf="signUpForm.get('password').hasError('minlength')">En az 3 karakter olmalıdır</span>
+      </div>
+      <input
+        class="form-control"
+        type="password"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        placeholder="Şifreniz Tekrar"
+      />
+      <div class="text-center" class="mb-2" *ngIf="signUpForm.get('confirmPassword').touched">
+        <span  class="text-danger" *ngIf="signUpForm.get('confirmPassword').hasError('required')" >Şifre tekrar alanı gereklidir!</span>
+        <span style="display: block;" class="text-danger" *ngIf="signUpForm.hasError('passwordsDoNotMatch')">Şifreler eşleşmiyor lütfen kontrol edin.</span>
+      </div>
+      <div class="text-center" class="d-flex flex-row justify-content-center">
+        <input class="btn btn-secondary" type="reset" value="Temizle" />
+        <input
+          class="btn"
+          type="submit"
+          value="Kayıt Ol"
+          [disabled]="!signUpForm.valid"
+        />
+      </div>
+
+      <p class="text-center">
+        Ankara Üniversitesi eposta adresi ile kayıt olmanız gereklidir.<br />Eğer
+        bir Ankara Üniversitesi epostanız yoksa, açmak için
+        <a href="https://epostabasvuru.ankara.edu.tr/" target="_blank"
+          >tıklayınız</a
+        >.
+      </p>
+      <p>Giriş yapmak için <a routerLink="/login">tıklayın</a></p>
+    </div>
+  </form>
+</div>

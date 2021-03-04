@@ -1,0 +1,36 @@
+<mat-tab-group>
+  <mat-tab label="GenelBilgi" >
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon"> info</mat-icon>
+      Genel Bilgi
+    </ng-template>
+    <div fxLayout="row" fxLayoutAlign="center" style="margin-top:3px">
+      <mat-card fxFlex="50" fxFlex.lt-md="100" fxLayoutAlign="center center" fxLayout="column">
+        <mat-card-title> {{ course?.name }}</mat-card-title>
+        <mat-card-subtitle>{{ course?.code }}</mat-card-subtitle>
+        <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+          <p>Identity Numarası : {{ course?.id }}</p>
+          <p>Duyuru sayısı : {{ course?.announcementCount }}</p>
+          <p>{{ course?.departmentName }}</p>
+          <p>Takip eden öğrenci sayısı : {{ course?.studentCount }}</p>
+          <p>Sorumlu öğretim görevlisi : {{ course?.teacherName }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Duyurular"
+    ><ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon"> announcement</mat-icon>
+      Duyurlar
+    </ng-template>
+    <app-announcements-course [courseId]="courseId"></app-announcements-course>
+  </mat-tab>
+  <mat-tab label="Ayarlar"
+    ><ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon"> edit</mat-icon>
+      Düzenle
+    </ng-template>
+    <app-course-edit [courseId]="courseId"></app-course-edit>
+    </mat-tab
+  >
+</mat-tab-group>

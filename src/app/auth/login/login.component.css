@@ -1,0 +1,17 @@
+#email,
+#password {
+  margin: 5px 0px;
+  width: 60%;
+
+}
+
+input[type=submit],#signup,
+button {
+  background-color: rgb(22, 57, 78);
+  color: white;
+  margin: 0px 5px;
+}
+
+form {
+  width: 90%;
+}
